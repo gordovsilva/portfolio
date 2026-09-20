@@ -8,11 +8,11 @@
   --faint:         #8b969c;
   --rule:          #d9dfe1;
   --rule-strong:   #c2cace;
-  --accent:        #8a5d00;
-  --accent-bright: #a86f04;
-  --accent-wash:   rgba(138, 93, 0, .075);
-  --accent-edge:   rgba(138, 93, 0, .30);
-  --sel:           rgba(138, 93, 0, .18);
+  --accent:        #00274c;
+  --accent-bright: #00417a;
+  --accent-wash:   rgba(0, 39, 76, .075);
+  --accent-edge:   rgba(0, 39, 76, .30);
+  --sel:           rgba(0, 39, 76, .18);
 
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body:    "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -44,11 +44,11 @@ html {
     --faint:         #65747b;
     --rule:          #1e282d;
     --rule-strong:   #2d383e;
-    --accent:        #eaa63f;
-    --accent-bright: #f5bb63;
-    --accent-wash:   rgba(234, 166, 63, .10);
-    --accent-edge:   rgba(234, 166, 63, .34);
-    --sel:           rgba(234, 166, 63, .24);
+    --accent:        #8ab9e0;
+    --accent-bright: #a9cdea;
+    --accent-wash:   rgba(138, 185, 224, .10);
+    --accent-edge:   rgba(138, 185, 224, .34);
+    --sel:           rgba(138, 185, 224, .24);
   }
 }
 
@@ -61,11 +61,11 @@ html {
   --faint:         #65747b;
   --rule:          #1e282d;
   --rule-strong:   #2d383e;
-  --accent:        #eaa63f;
-  --accent-bright: #f5bb63;
-  --accent-wash:   rgba(234, 166, 63, .10);
-  --accent-edge:   rgba(234, 166, 63, .34);
-  --sel:           rgba(234, 166, 63, .24);
+  --accent:        #8ab9e0;
+  --accent-bright: #a9cdea;
+  --accent-wash:   rgba(138, 185, 224, .10);
+  --accent-edge:   rgba(138, 185, 224, .34);
+  --sel:           rgba(138, 185, 224, .24);
 }
 
 /* ---------- base ---------- */
