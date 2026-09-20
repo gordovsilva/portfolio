@@ -271,13 +271,35 @@ a { color: inherit; }
   font-size: .8rem;
 }
 .contact-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: .42rem;
   color: var(--muted);
   text-decoration: none;
+  transition: color .18s ease;
+}
+/* The rule sits on the label, not the anchor, so it doesn't run under the icon. */
+.contact-row a .lbl {
   border-bottom: 1px solid var(--rule-strong);
   padding-bottom: 1px;
-  transition: color .18s ease, border-color .18s ease;
+  transition: border-color .18s ease;
 }
-.contact-row a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.contact-row a:hover { color: var(--accent); }
+.contact-row a:hover .lbl { border-bottom-color: var(--accent); }
+
+.contact-row .ic {
+  width: .95rem;
+  height: .95rem;
+  flex-shrink: 0;
+}
+
+/* Holds the <symbol> definitions without occupying layout. */
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
 
 /* ---------- clearance banner (the one loud moment) ---------- */
 .clearance {
