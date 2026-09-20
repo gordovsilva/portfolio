@@ -239,7 +239,7 @@ a { color: inherit; }
 .status-row {
   display: flex;
   flex-wrap: wrap;
-  gap: .55rem .9rem;
+  gap: .55rem 1.15rem;
   font-family: var(--font-mono);
   font-size: .74rem;
   letter-spacing: .04em;
@@ -247,9 +247,20 @@ a { color: inherit; }
   margin-bottom: 1.9rem;
 }
 .status-row span { display: inline-flex; align-items: center; gap: .45rem; }
+
+/* The accent dot pulls the eye to availability first; the hometown sits a step
+   back, marked by an outlined pin rather than a filled dot. */
 .pulse {
   width: .4rem; height: .4rem; border-radius: 50%;
   background: var(--accent); flex-shrink: 0;
+}
+
+.hometown .pin {
+  width: .82rem;
+  height: .82rem;
+  flex-shrink: 0;
+  color: var(--faint);
+  margin-left: -.06rem;   /* the glyph's own side bearing, optically corrected */
 }
 
 .contact-row {
