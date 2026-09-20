@@ -8,11 +8,11 @@
   --faint:         #8b969c;
   --rule:          #d9dfe1;
   --rule-strong:   #c2cace;
-  --accent:        #00274c;
-  --accent-bright: #00417a;
-  --accent-wash:   rgba(0, 39, 76, .075);
-  --accent-edge:   rgba(0, 39, 76, .30);
-  --sel:           rgba(0, 39, 76, .18);
+  --accent:        #0b5cad;
+  --accent-bright: #1a6dc9;
+  --accent-wash:   rgba(11, 92, 173, .075);
+  --accent-edge:   rgba(11, 92, 173, .30);
+  --sel:           rgba(11, 92, 173, .18);
 
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body:    "Source Serif 4", Georgia, "Times New Roman", serif;
