@@ -200,7 +200,7 @@ a { color: inherit; }
 }
 
 /* ---------- hero ---------- */
-.hero { padding-block: 4.25rem 2.5rem; }
+.hero { padding-block: 2.25rem 2.5rem; }
 
 .hero h1 {
   font-family: var(--font-display);
@@ -506,7 +506,7 @@ dl { margin: 0; }
   .entry-rail .place { display: inline; margin-top: 0; }
   .entry-rail .place::before { content: " · "; }
   .skill-group dt { padding-top: 0; }
-  .hero { padding-block: 3rem 2rem; }
+  .hero { padding-block: 1.75rem 2rem; }
   .masthead nav { gap: .85rem; }
   .navlink { font-size: .68rem; }
   .shell, .masthead-inner { padding-inline: 1.15rem; }
