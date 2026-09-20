@@ -20,6 +20,18 @@
 
   --measure: 46rem;
   --rail: 9.5rem;
+
+  /* Fallback until the script measures the real masthead. */
+  --header-h: 3.35rem;
+}
+
+html {
+  /* Keeps anchor targets clear of the sticky masthead. */
+  scroll-padding-top: calc(var(--header-h) + 1.25rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,6 +101,12 @@ a { color: inherit; }
   backdrop-filter: saturate(160%) blur(10px);
   -webkit-backdrop-filter: saturate(160%) blur(10px);
   border-bottom: 1px solid var(--rule);
+  transition: transform .28s cubic-bezier(.4, 0, .2, 1);
+  will-change: transform;
+}
+
+.masthead.is-hidden {
+  transform: translateY(calc(-100% - env(safe-area-inset-top, 0px)));
 }
 
 .masthead-inner {
@@ -158,13 +176,19 @@ a { color: inherit; }
   transition: color .18s ease, border-color .18s ease, background .18s ease;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent-edge); background: var(--accent-wash); }
-.theme-toggle svg { width: 15px; height: 15px; display: block; }
-.icon-moon { display: none; }
-:root[data-theme="dark"] .icon-sun { display: none; }
-:root[data-theme="dark"] .icon-moon { display: block; }
+.theme-toggle svg { width: 15px; height: 15px; }
+
+/* Sun in light, moon in dark. These selectors all carry the same weight as
+   `.theme-toggle svg`, so whichever icon is hidden actually stays hidden. */
+.theme-toggle .icon-sun  { display: block; }
+.theme-toggle .icon-moon { display: none; }
+
+:root[data-theme="dark"] .theme-toggle .icon-sun  { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-sun { display: none; }
-  :root:not([data-theme="light"]) .icon-moon { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun  { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: block; }
 }
 
 /* ---------- shell ---------- */
@@ -488,7 +512,8 @@ dl { margin: 0; }
   .shell, .masthead-inner { padding-inline: 1.15rem; }
 }
 
-@media (max-width: 430px) {
+/* Five nav links need more room than the four this breakpoint was tuned for. */
+@media (max-width: 520px) {
   .nav-hide-xs { display: none; }
 }
 

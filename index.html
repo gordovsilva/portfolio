@@ -9,9 +9,10 @@
   <div class="masthead-inner">
     <a class="monogram" href="#top">Jose Silva</a>
     <nav>
+      <a class="navlink" href="#education">School</a>
       <a class="navlink" href="#work">Work</a>
       <a class="navlink" href="#projects">Projects</a>
-      <a class="navlink nav-hide-xs" href="#background">Background</a>
+      <a class="navlink nav-hide-xs" href="#background">Toolkit</a>
       <a class="navlink nav-hide-xs" href="#contact">Contact</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -33,17 +34,17 @@
     <p class="alias">&ldquo;Gordo&rdquo; &middot; Software Engineer</p>
 
     <p class="thesis">
-      I build systems that <strong>show their work</strong> &mdash; a course planner that derives
-      every recommendation from a constraint solver instead of guessing, a crawler that detects
-      real change by hashing pages rather than trusting a timestamp.
+      I like building systems that <strong>show their work</strong> &mdash; a course planner that
+      derives every recommendation from a constraint solver instead of guessing, a crawler that
+      catches real change by hashing pages rather than trusting a timestamp.
     </p>
     <p class="thesis-sub">
-      Computer science at the University of Michigan, currently a software development intern
-      at Leidos building enterprise applications and AI-assisted workflows.
+      I'm studying computer science at the University of Michigan, and right now I'm a software
+      development intern at Leidos, working on enterprise applications and AI-assisted workflows.
     </p>
 
     <div class="status-row">
-      <span><i class="pulse"></i> Open to Summer 2027 internships</span>
+      <span><i class="pulse"></i> Open to 2026 &amp; 2027 internships</span>
       <span>Ann Arbor, MI</span>
     </div>
 
@@ -66,8 +67,28 @@
     </div>
   </aside>
 
+  <section class="section" id="education">
+    <div class="section-head"><h2>Where I'm studying</h2></div>
+
+    <article class="entry">
+      <div class="entry-rail">
+        Aug 2024 &mdash; May 2028
+        <span class="place">Ann Arbor, MI</span>
+      </div>
+      <div>
+        <h3 class="entry-title">University of Michigan</h3>
+        <p class="entry-role">B.S.E. Computer Science &middot; Michigan LEAD Scholar</p>
+        <ul>
+          <li>Coursework in data structures and algorithms, computer security, computer organization, software engineering, data-oriented programming, and web accessibility.</li>
+          <li>Mathematics through linear algebra, multivariable calculus, and honors statistics and data analysis.</li>
+        </ul>
+      </div>
+    </article>
+
+  </section>
+
   <section class="section" id="work">
-    <div class="section-head"><h2>Work</h2></div>
+    <div class="section-head"><h2>Where I've worked</h2></div>
 
     <article class="entry">
       <div class="entry-rail">
@@ -132,7 +153,7 @@
   </section>
 
   <section class="section" id="projects">
-    <div class="section-head"><h2>Projects</h2></div>
+    <div class="section-head"><h2>Things I've built</h2></div>
 
     <article class="entry">
       <div class="entry-rail">
@@ -190,24 +211,9 @@
   </section>
 
   <section class="section" id="background">
-    <div class="section-head"><h2>Background</h2></div>
+    <div class="section-head"><h2>What I work with</h2></div>
 
-    <article class="entry">
-      <div class="entry-rail">
-        Aug 2024 &mdash; May 2028
-        <span class="place">Ann Arbor, MI</span>
-      </div>
-      <div>
-        <h3 class="entry-title">University of Michigan</h3>
-        <p class="entry-role">B.S.E. Computer Science &middot; Michigan LEAD Scholar</p>
-        <ul>
-          <li>Coursework in data structures and algorithms, computer security, computer organization, software engineering, data-oriented programming, and web accessibility.</li>
-          <li>Mathematics through linear algebra, multivariable calculus, and honors statistics and data analysis.</li>
-        </ul>
-      </div>
-    </article>
-
-    <dl style="margin-top:2.25rem">
+    <dl>
       <div class="skill-group">
         <dt>Languages</dt>
         <dd>C++ &middot; Java &middot; Python &middot; TypeScript &middot; JavaScript &middot; SQL &middot; C &middot; Bash</dd>
@@ -224,10 +230,11 @@
   </section>
 
   <footer class="footer" id="contact">
-    <h2>Let's talk.</h2>
+    <h2>Say hello</h2>
     <p>
-      I'm looking for Summer 2027 software engineering internships &mdash; cleared work especially.
-      The fastest way to reach me is email.
+      I'm looking for winter/spring and summer software engineering internships across
+      2026 and 2027. Email is the quickest way to reach me, and I'm always happy to hear
+      from people building something interesting.
     </p>
     <div class="contact-row">
       <a href="mailto:gordovsilva@gmail.com">gordovsilva@gmail.com</a>
@@ -267,5 +274,83 @@
         try { localStorage.setItem(KEY, next); } catch (e) { /* not persisted */ }
       });
     }
+  })();
+</script>
+
+<script>
+  /* Masthead: retracts on the way down, returns on the way up. */
+  (function () {
+    var header = document.querySelector(".masthead");
+    if (!header) return;
+
+    var HIDE_AFTER = 24;   // px travelled downward before it retracts
+    var SHOW_AFTER = 24;   // px travelled upward before it returns
+    var headerHeight = 0;
+
+    function measure() {
+      headerHeight = header.offsetHeight;
+      document.documentElement.style.setProperty("--header-h", headerHeight + "px");
+    }
+    measure();
+    if (window.ResizeObserver) new ResizeObserver(measure).observe(header);
+    else window.addEventListener("resize", measure);
+
+    var lastY = window.scrollY;
+    var pivot = lastY;          // where the current run of scrolling began
+    var dir = 0;                // -1 up, 1 down
+    var hidden = false;
+    var lockUntil = 0;          // programmatic scrolls must not retract it
+    var queued = false;
+
+    function setHidden(next) {
+      if (next === hidden) return;
+      hidden = next;
+      header.classList.toggle("is-hidden", next);
+    }
+
+    function update() {
+      queued = false;
+      // Clamp away rubber-band overscroll at either end.
+      var maxY = document.documentElement.scrollHeight - window.innerHeight;
+      var y = Math.min(Math.max(window.scrollY, 0), Math.max(maxY, 0));
+
+      if (performance.now() < lockUntil) {
+        setHidden(false);
+        lastY = pivot = y;
+        return;
+      }
+
+      if (y <= headerHeight) {          // near the top it always shows
+        setHidden(false);
+        lastY = pivot = y;
+        return;
+      }
+
+      var nextDir = y > lastY ? 1 : (y < lastY ? -1 : dir);
+      if (nextDir !== dir) {
+        dir = nextDir;
+        pivot = lastY;          // a reversal restarts the travel count
+      }
+
+      if (dir === 1 && y - pivot > HIDE_AFTER) setHidden(true);
+      else if (dir === -1 && pivot - y > SHOW_AFTER) setHidden(false);
+
+      lastY = y;
+    }
+
+    window.addEventListener("scroll", function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+
+    // In-page links scroll smoothly (CSS) and leave the masthead in place.
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!link || link.getAttribute("href") === "#") return;
+      if (!document.querySelector(link.getAttribute("href"))) return;
+      lockUntil = performance.now() + 1000;
+      setHidden(false);
+    });
   })();
 </script>
