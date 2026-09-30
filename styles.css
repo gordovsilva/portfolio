@@ -553,3 +553,40 @@ dl { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* ---------- download buttons ---------- */
+.downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1.15rem;
+}
+.dl {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .03em;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--rule-strong);
+  padding: .36rem .62rem;
+  transition: color .18s ease, border-color .18s ease, background .18s ease;
+}
+.dl:hover {
+  color: var(--accent);
+  border-color: var(--accent-edge);
+  background: var(--accent-wash);
+}
+.dl .ic { width: .88rem; height: .88rem; flex-shrink: 0; }
+.dl .dl-meta { color: var(--faint); }
+
+.dl-note {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  line-height: 1.55;
+  color: var(--faint);
+  margin: .7rem 0 0;
+  max-width: 28rem;
+}
