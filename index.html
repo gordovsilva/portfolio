@@ -248,7 +248,7 @@
         <h3 class="entry-title">Metroid (NES), Rebuilt from Scratch</h3>
         <p class="entry-role">Weapon systems &middot; authenticity parity &middot; bug triage</p>
         <ul>
-          <li>Recreated the 1986 NES original in <strong>Unity and C#</strong> with a three-person team &mdash; no original assets or code, every system rebuilt from observed behavior.</li>
+          <li>Recreated the 1986 NES original in <strong>Unity and C#</strong> with a three-person team, working from some of the game's original assets. Every system behind them &mdash; movement, weapons, enemies, world state &mdash; was written from scratch against observed behavior.</li>
           <li>Implemented the <strong>core weapon logic</strong>: beam and missile firing, mode switching with HUD events, and the projectile lifecycle. Rate of fire is gated the way the original gates it &mdash; a <strong>three-shot on-screen cap</strong> shared across beams and missiles, so you cannot fire again until an earlier shot expires or connects.</li>
           <li>Ran <strong>authenticity checks</strong> against the NES game and tuned behavior in its units rather than approximations: the default beam travels a third of a screen, the Long Beam flies until it leaves the view, and missiles cross the full screen at a slower speed than the beam.</li>
           <li>Owned <strong>bug testing and fixes</strong> across the team's systems through to the gold build.</li>
@@ -269,6 +269,36 @@
           Unsigned builds. On macOS, right-click the app and choose Open the first time &mdash;
           Gatekeeper blocks a plain double-click.
         </p>
+
+        <div class="controls">
+          <p class="controls-head">Controls</p>
+          <dl class="control-list">
+            <div class="control">
+              <dt>Move</dt>
+              <dd><kbd>WASD</kbd><span class="or">/</span><kbd>Arrow keys</kbd></dd>
+            </div>
+            <div class="control">
+              <dt>Jump</dt>
+              <dd><kbd>Z</kbd><span class="or">/</span><kbd>,</kbd></dd>
+            </div>
+            <div class="control">
+              <dt>Fire weapon</dt>
+              <dd><kbd>X</kbd><span class="or">/</span><kbd>.</kbd></dd>
+            </div>
+            <div class="control">
+              <dt>Switch weapons</dt>
+              <dd><kbd>Spacebar</kbd></dd>
+            </div>
+            <div class="control">
+              <dt>God mode</dt>
+              <dd><kbd>1</kbd><span class="or">&middot;</span><span class="control-aside">debug</span></dd>
+            </div>
+            <div class="control">
+              <dt>Custom level</dt>
+              <dd><kbd>4</kbd><span class="or">&middot;</span><span class="control-aside">the grapple-hook level</span></dd>
+            </div>
+          </dl>
+        </div>
 
         <div class="tags">
           <span class="tag">Unity</span>

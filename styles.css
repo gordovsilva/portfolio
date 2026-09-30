@@ -590,3 +590,56 @@ dl { margin: 0; }
   margin: .7rem 0 0;
   max-width: 28rem;
 }
+
+/* ---------- controls list ---------- */
+.controls { margin-top: 1.5rem; }
+.controls-head {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 .75rem;
+}
+.control-list { margin: 0; display: grid; gap: .4rem; }
+.control {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: .5rem;
+  align-items: baseline;
+}
+.control dt {
+  font-family: var(--font-mono);
+  font-size: .71rem;
+  letter-spacing: .02em;
+  color: var(--muted);
+}
+.control dd {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .3rem;
+}
+.control .or { color: var(--faint); font-size: .66rem; }
+.control .control-aside {
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  color: var(--faint);
+}
+
+kbd {
+  font-family: var(--font-mono);
+  font-size: .67rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface-2);
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  padding: .08rem .34rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .control { grid-template-columns: 1fr; gap: .2rem; }
+}
