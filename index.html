@@ -242,6 +242,77 @@
     <article class="entry">
       <div class="entry-rail">
         Fall 2026
+        <span class="place">Solo &middot; Unity</span>
+      </div>
+      <div>
+        <h3 class="entry-title">Shiftmates</h3>
+        <p class="entry-role">A puzzle-platformer where only one coworker moves through time</p>
+        <ul>
+          <li>You control two office workers, but only the one you're driving moves through time. Switch, and the other <strong>falls asleep exactly where they are</strong> &mdash; mid-jump, if that's where you left them &mdash; and becomes a solid platform to stand on and leap from. Wake them and they finish the same arc at the same speed, as though no time had passed. Get either one into the elevator to clear the level.</li>
+          <li>Freezing a worker doesn't switch their physics off, which would drop them through the floor or stop them being solid. The body is <strong>locked in place while staying collidable</strong>, its exact velocity is stored, and that velocity is restored on waking in a particular order so the engine doesn't quietly zero it out. That ordering is what makes "no time passed" hold up in midair.</li>
+          <li>Movement <strong>accelerates toward a target speed</strong> rather than setting speed straight from the keys, so a worker woken mid-flight gets steered instead of wiped. The controller also carries the forgivenesses players feel without noticing: variable jump height, <strong>coyote time</strong> (a brief grace period to still jump just after walking off a ledge) and a <strong>jump buffer</strong> (a jump pressed a moment before landing still fires).</li>
+          <li>Systems never reference each other directly &mdash; they talk over a <strong>publish/subscribe event bus</strong> (worker switched, button pressed, level complete, worker died), and buttons pair to barriers by channel number, so one level can run several independent button-and-door puzzles at once. Nine single-screen levels across 13 single-purpose C# scripts and 7 reusable prefabs.</li>
+          <li>Every element is office furniture doing a platformer's job: paperclip-chain barriers held open by a red button, staple guns that slam shut and fire a fatal staple, and pen platforms that slide back and forth. The rules stay consistent rather than convenient &mdash; staples kill a <em>sleeping</em> worker too, so freezing is never a shield, and a pen platform won't carry a sleeping worker, who is left hanging as it slides out from under them.</li>
+        </ul>
+
+        <p class="credit-note">
+          The design, all nine levels, and every decision in the Unity Editor &mdash; scenes, prefabs,
+          physics tuning, build setup &mdash; are mine, along with the playtesting and the office
+          concept and art direction. The C# was written alongside Claude (Anthropic) under my direction,
+          and each script carries that credit as the course requires; the sprite cleanup was done
+          the same way.
+        </p>
+
+        <div class="downloads">
+          <a class="dl" href="https://github.com/gordovsilva/portfolio/releases/download/shiftmates/shiftmates-mac.zip">
+            <svg class="ic" aria-hidden="true"><use href="#i-download"></use></svg>
+            macOS build <span class="dl-meta">.zip</span>
+          </a>
+          <a class="dl" href="https://github.com/gordovsilva/portfolio/releases/download/shiftmates/shiftmates-windows.zip">
+            <svg class="ic" aria-hidden="true"><use href="#i-download"></use></svg>
+            Windows build <span class="dl-meta">.zip</span>
+          </a>
+        </div>
+        <p class="dl-note">
+          Unsigned builds. On macOS, right-click the app and choose Open the first time &mdash;
+          Gatekeeper blocks a plain double-click.
+        </p>
+
+        <div class="controls">
+          <p class="controls-head">Controls</p>
+          <dl class="control-list">
+            <div class="control">
+              <dt>Move</dt>
+              <dd><kbd>A</kbd><kbd>D</kbd><span class="or">/</span><kbd>&larr;</kbd><kbd>&rarr;</kbd></dd>
+            </div>
+            <div class="control">
+              <dt>Jump</dt>
+              <dd><kbd>W</kbd><span class="or">/</span><kbd>&uarr;</kbd><span class="or">&middot;</span><span class="control-aside">tap to hop, hold for height</span></dd>
+            </div>
+            <div class="control">
+              <dt>Switch worker</dt>
+              <dd><kbd>Spacebar</kbd></dd>
+            </div>
+            <div class="control">
+              <dt>Restart level</dt>
+              <dd><kbd>R</kbd></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Unity</span>
+          <span class="tag">C#</span>
+          <span class="tag">2D Physics</span>
+          <span class="tag">Game Design</span>
+          <span class="tag">Level Design</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="entry-rail">
+        Fall 2026
         <span class="place">Team of 3 &middot; Unity</span>
       </div>
       <div>

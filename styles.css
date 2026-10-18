@@ -643,3 +643,14 @@ kbd {
 @media (max-width: 640px) {
   .control { grid-template-columns: 1fr; gap: .2rem; }
 }
+
+/* Attribution line inside a project entry — fine print, but legible fine print. */
+.credit-note {
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 1.1rem 0 0;
+  padding-left: .85rem;
+  border-left: 1px solid var(--rule);
+  max-width: 34rem;
+}
