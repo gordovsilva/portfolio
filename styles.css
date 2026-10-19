@@ -654,3 +654,43 @@ kbd {
   border-left: 1px solid var(--rule);
   max-width: 34rem;
 }
+
+/* ---------- desktop scale ----------
+   The whole layout is sized in rem, so raising the root font size widens the
+   measure and enlarges the type together while line length, counted in
+   characters, stays exactly where it was. Each step also widens the measure and
+   the rail outright, so big screens get a page that fills them instead of a
+   phone column parked in the middle. */
+@media (min-width: 1100px) {
+  :root {
+    font-size: 17px;
+    --measure: 52rem;
+    --rail: 11rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  :root {
+    font-size: 18px;
+    --measure: 56rem;
+    --rail: 12rem;
+  }
+}
+
+@media (min-width: 1900px) {
+  :root {
+    font-size: 19px;
+    --measure: 58rem;
+    --rail: 12.5rem;
+  }
+}
+
+/* The hero's 34rem caps read as a narrow gutter once the measure widens, so let
+   the opening paragraphs out a little to sit under the masthead properly. */
+@media (min-width: 1100px) {
+  .thesis, .thesis-sub { max-width: 40rem; }
+  .credit-note { max-width: 38rem; }
+}
+
+/* Body copy stops widening before lines get hard to track back from. */
+.entry ul { max-width: 38rem; }
