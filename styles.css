@@ -21,6 +21,13 @@
   --measure: 46rem;
   --rail: 9.5rem;
 
+  /* Desktop two-column geometry. --spread is derived, so the 1600px step only
+     has to restate the three parts. */
+  --aside-w:    18rem;
+  --stream-w:   56rem;
+  --spread-gap: 4rem;
+  --spread: calc(var(--aside-w) + var(--spread-gap) + var(--stream-w));
+
   /* Fallback until the script measures the real masthead. */
   --header-h: 3.35rem;
 }
@@ -655,41 +662,93 @@ kbd {
   max-width: 34rem;
 }
 
-/* ---------- desktop scale ----------
-   The whole layout is sized in rem, so raising the root font size widens the
-   measure and enlarges the type together while line length, counted in
-   characters, stays exactly where it was. Each step also widens the measure and
-   the rail outright, so big screens get a page that fills them instead of a
-   phone column parked in the middle. */
-@media (min-width: 1100px) {
+/* ---------- desktop: identity rail + scrolling stream ----------
+   Body text can't usefully be 1000px wide, so wide screens spend their width on
+   structure instead of line length: the hero detaches into a sticky rail that
+   keeps the name, pitch and contact details on screen, and everything else
+   scrolls past it. Raising the root size on top of that enlarges type and
+   measure together, leaving line length in characters where it was. */
+
+.stream { min-width: 0; }
+
+@media (min-width: 1200px) {
   :root {
     font-size: 17px;
-    --measure: 52rem;
-    --rail: 11rem;
+    --rail: 10rem;
+  }
+
+  /* +6rem so the inner content box matches the grid tracks, not the tracks
+     minus this element's own padding -- otherwise the monogram sits 3rem
+     inboard of the name below it. */
+  .masthead-inner {
+    max-width: calc(var(--spread) + 6rem);
+    padding-inline: 3rem;
+  }
+
+  .shell {
+    display: grid;
+    grid-template-columns: var(--aside-w) minmax(0, var(--stream-w));
+    column-gap: var(--spread-gap);
+    justify-content: center;
+    align-items: start;
+    max-width: none;
+    padding-inline: 3rem;
+    padding-block: 0 5.5rem;
+  }
+
+  .hero { padding-block: 2.6rem 0; }
+  .stream { padding-block: 2.6rem 0; }
+
+  /* Retuned for a 18rem column rather than a 46rem page. */
+  .hero h1 { font-size: clamp(2.2rem, 2.5vw, 2.9rem); }
+  .hero .alias { margin-bottom: 1.15rem; }
+  .thesis {
+    font-size: 1rem;
+    line-height: 1.54;
+    max-width: none;
+    margin-bottom: .8rem;
+  }
+  .thesis-sub {
+    font-size: .92rem;
+    line-height: 1.54;
+    max-width: none;
+    margin-bottom: 1.35rem;
+  }
+
+  /* Stacked, these read as a list of facts instead of a wrapping run of text. */
+  .hero .status-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero .contact-row {
+    flex-direction: column;
+    gap: .6rem;
+    font-size: .76rem;
+  }
+
+  /* The rail already carries the date, so the section rules start at the text. */
+  .section:first-child .section-head { margin-top: 0; }
+}
+
+/* Auto-placement puts the hero in column 1 and the stream in column 2; they
+   share one row, so the row is as tall as the stream and the hero can stick
+   inside it -- but only once the viewport is tall enough to show all of it. */
+@media (min-width: 1200px) and (min-height: 780px) {
+  .hero {
+    position: sticky;
+    top: calc(var(--header-h) + 2.1rem);
   }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1600px) {
   :root {
     font-size: 18px;
-    --measure: 56rem;
-    --rail: 12rem;
+    --aside-w: 19rem;
+    --stream-w: 58rem;
+    --spread-gap: 4.5rem;
   }
-}
-
-@media (min-width: 1900px) {
-  :root {
-    font-size: 19px;
-    --measure: 58rem;
-    --rail: 12.5rem;
-  }
-}
-
-/* The hero's 34rem caps read as a narrow gutter once the measure widens, so let
-   the opening paragraphs out a little to sit under the masthead properly. */
-@media (min-width: 1100px) {
-  .thesis, .thesis-sub { max-width: 40rem; }
-  .credit-note { max-width: 38rem; }
 }
 
 /* Body copy stops widening before lines get hard to track back from. */
