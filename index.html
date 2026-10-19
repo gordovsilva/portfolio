@@ -225,9 +225,9 @@
         <h3 class="entry-title">Research &amp; Publication Aggregator</h3>
         <p class="entry-role">Change detection across ~200 research sites</p>
         <ul>
-          <li>A configurable monitoring system that scrapes nearly <strong>200 university research sites</strong> and Google Scholar profiles, detecting new publications via <strong>SHA-256 page hashing</strong> with JSON-persisted snapshots and duplicate detection.</li>
-          <li>Request throttling and structured logging keep multi-site crawling stable at scale.</li>
-          <li>An aggregation pipeline extracts page content, generates summaries with the Claude API, and consolidates new research into HTML and plaintext email digests.</li>
+          <li>Built a configurable monitoring system that scrapes nearly <strong>200 university research sites</strong> and Google Scholar profiles, detecting new publications via <strong>SHA-256 page hashing</strong> with JSON-persisted snapshots and duplicate detection.</li>
+          <li>Kept multi-site crawling stable at scale with request throttling and structured logging.</li>
+          <li>Assembled an aggregation pipeline that extracts page content, generates summaries with the Claude API, and consolidates new research into HTML and plaintext email digests.</li>
         </ul>
         <div class="tags">
           <span class="tag">Python</span>
@@ -248,11 +248,11 @@
         <h3 class="entry-title">Shiftmates</h3>
         <p class="entry-role">A puzzle-platformer where only one coworker moves through time</p>
         <ul>
-          <li>You control two office workers, but only the one you're driving moves through time. Switch, and the other <strong>falls asleep exactly where they are</strong> &mdash; mid-jump, if that's where you left them &mdash; and becomes a solid platform to stand on and leap from. Wake them and they finish the same arc at the same speed, as though no time had passed. Get either one into the elevator to clear the level.</li>
-          <li>Freezing a worker doesn't switch their physics off, which would drop them through the floor or stop them being solid. The body is <strong>locked in place while staying collidable</strong>, its exact velocity is stored, and that velocity is restored on waking in a particular order so the engine doesn't quietly zero it out. That ordering is what makes "no time passed" hold up in midair.</li>
-          <li>Movement <strong>accelerates toward a target speed</strong> rather than setting speed straight from the keys, so a worker woken mid-flight gets steered instead of wiped. The controller also carries the forgivenesses players feel without noticing: variable jump height, <strong>coyote time</strong> (a brief grace period to still jump just after walking off a ledge) and a <strong>jump buffer</strong> (a jump pressed a moment before landing still fires).</li>
-          <li>Systems never reference each other directly &mdash; they talk over a <strong>publish/subscribe event bus</strong> (worker switched, button pressed, level complete, worker died), and buttons pair to barriers by channel number, so one level can run several independent button-and-door puzzles at once. Nine single-screen levels across 13 single-purpose C# scripts and 7 reusable prefabs.</li>
-          <li>Every element is office furniture doing a platformer's job: paperclip-chain barriers held open by a red button, staple guns that slam shut and fire a fatal staple, and pen platforms that slide back and forth. The rules stay consistent rather than convenient &mdash; staples kill a <em>sleeping</em> worker too, so freezing is never a shield, and a pen platform won't carry a sleeping worker, who is left hanging as it slides out from under them.</li>
+          <li>Designed a two-body mechanic in which only the worker you're driving moves through time. Switch, and the other <strong>falls asleep exactly where they are</strong> &mdash; mid-jump, if that's where you left them &mdash; becoming a solid platform to stand on and leap from. Wake them and they finish the same arc at the same speed, as though no time had passed. Get either one into the elevator to clear the level.</li>
+          <li>Specified a freeze that <strong>locks a worker's body in place while keeping it collidable</strong>, rather than switching physics off and dropping them through the floor. Stored the exact velocity and restored it on waking in a particular order, so the engine doesn't quietly zero it out &mdash; that ordering is what makes "no time passed" hold up in midair.</li>
+          <li>Tuned a movement controller that <strong>accelerates toward a target speed</strong> instead of setting speed straight from the keys, so a worker woken mid-flight gets steered rather than wiped. Layered in the forgivenesses players feel without noticing: variable jump height, <strong>coyote time</strong> (a brief grace period to still jump just after walking off a ledge) and a <strong>jump buffer</strong> (a jump pressed a moment before landing still fires).</li>
+          <li>Structured the systems around a <strong>publish/subscribe event bus</strong> &mdash; worker switched, button pressed, level complete, worker died &mdash; so nothing references anything else directly, and paired buttons to barriers by channel number so a single level can run several independent puzzles at once. Shipped nine single-screen levels across 13 single-purpose C# scripts and 7 reusable prefabs.</li>
+          <li>Themed every element as office furniture doing a platformer's job: paperclip-chain barriers held open by a red button, staple guns that slam shut and fire a fatal staple, and pen platforms that slide back and forth. Kept the rules consistent rather than convenient &mdash; staples kill a <em>sleeping</em> worker too, so freezing is never a shield, and a pen platform refuses to carry one, leaving them hanging as it slides out from under them.</li>
         </ul>
         <div class="downloads">
           <a class="dl" href="https://github.com/gordovsilva/portfolio/releases/download/shiftmates/shiftmates-mac.zip">
@@ -314,7 +314,7 @@
           <li>Implemented the <strong>core weapon logic</strong>: beam and missile firing, mode switching with HUD events, and the projectile lifecycle. Rate of fire is gated the way the original gates it &mdash; a <strong>three-shot on-screen cap</strong> shared across beams and missiles, so you cannot fire again until an earlier shot expires or connects.</li>
           <li>Ran <strong>authenticity checks</strong> against the NES game and tuned behavior in its units rather than approximations: the default beam travels a third of a screen, the Long Beam flies until it leaves the view, and missiles cross the full screen at a slower speed than the beam.</li>
           <li>Owned <strong>bug testing and fixes</strong> across the team's systems through to the gold build.</li>
-          <li>The team also shipped an original level built around a custom <strong>grappling hook</strong> &mdash; it fires straight up, carries the player along the rope, and swings to build horizontal momentum, with metal tiles that refuse the hook to make players read the environment.</li>
+          <li>Shipped an original level with the team, built around a custom <strong>grappling hook</strong> that fires straight up, carries the player along the rope, and swings to build horizontal momentum &mdash; with metal tiles that refuse the hook, to make players read the environment.</li>
         </ul>
 
         <div class="downloads">
